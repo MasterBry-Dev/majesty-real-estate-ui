@@ -1,17 +1,24 @@
 import Table from "../components/table"
 import Select from 'react-select';
 import { Tab } from '@headlessui/react';
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
+import { setPageTitle } from "../store/themeConfigSlice";
 
 import PropertyInformation from "../components/PropertyInventory/PropertyInformation";
 import OtherInformation from "../components/PropertyInventory/OtherInformation";
 import MarketingInformation from "../components/PropertyInventory/MarketingInformation";
+import { useDispatch } from "react-redux";
 
 interface PropertyInventoryProps {
 
 }
 
 const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Property Inventory'));
+    });
     const columns = [
         { 
             accessor: 'code', 
