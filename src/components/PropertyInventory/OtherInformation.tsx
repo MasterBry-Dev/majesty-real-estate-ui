@@ -7,7 +7,7 @@ const OtherInformation: React.FC<OtherInformationProps> = ({}) => {
     return (
        <div className="pt-5 gap-5">
        
-        <div className="panel border-slate-800 border relative mb-5">
+        <div className="panel border-slate-300 border relative mb-5">
         <span className="absolute -top-3 left-5 bg-white px-2">Seller Information</span>
         <div className="grid ">
             <div className="grid grid-cols-2">
@@ -26,13 +26,13 @@ const OtherInformation: React.FC<OtherInformationProps> = ({}) => {
         </div>
         </div>
 
-        <div className="grid panel border-slate-800 border relative mb-5">
+        <div className="grid panel border-slate-300 border relative mb-5">
         <span className="absolute -top-3 left-5 bg-white px-2">Documents / Seller expenses</span>
         <span className="mb-2">Documents: </span>
         <span>Seller Expenses :</span>
         </div>
 
-        <div className="panel border-slate-800 border relative ">
+        <div className="panel border-slate-300 border relative ">
         <span className="absolute -top-3 left-5 bg-white px-2">Other information</span>
         <div className="grid grid-cols-2">
         <span>Date Source : </span>

@@ -20,7 +20,7 @@ const MarketingInformation: React.FC<MarketingInformationProps> = ({}) => {
 
     return (
        <div className="pt-5">
-         <div className="panel border-slate-800 border relative mb-5 h-96">
+         <div className="panel border-slate-300 border relative mb-5 h-96">
         <span className="absolute -top-3 left-5 bg-white px-2">My Hometown and Advertisement Website</span>
         <div className="flex justify-end mx-5 mb-2">
             <button className="btn btn-success btn-sm">Make ads</button>
