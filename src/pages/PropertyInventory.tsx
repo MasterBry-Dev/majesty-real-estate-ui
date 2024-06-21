@@ -113,6 +113,18 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
     ]
 
     return (
+        <>
+        <div className="mb-5">
+                <ol className="flex text-gray-500 font-semibold dark:text-white-dark">
+                    <li>
+                        <button type="button">Administrator</button>
+                    </li>
+                    <li className="before:content-['/'] before:px-1.5">
+                        <button className="text-primary dark:text-white-light hover:text-black/70 dark:hover:text-white-light/70">Property Inventory</button>
+                    </li>
+                    
+                 </ol>
+            </div>
         <div>
             <div className='grid xl:grid-cols-4 gap-3'>
                 <div className='col-span-1 panel'>
@@ -181,7 +193,8 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
             </div>
 
             <Table fields={columns} values={rowData} show={true}/>
-        </div>    
+        </div>
+        </>    
     )
 }
 export default PropertyInventory
