@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../store/themeConfigSlice';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
     interface TableProps  {
@@ -13,10 +14,7 @@ import { setPageTitle } from '../store/themeConfigSlice';
     }
 
 const Table: React.FC<TableProps>  = ({fields, values, show}) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Multi Column Table'));
-    });
+   
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -71,12 +69,26 @@ const Table: React.FC<TableProps>  = ({fields, values, show}) => {
         <div>
             {/* <h1 className='mx-3 text-2xl text-dark font-bold py-4'>PROPERTY INVENTORY</h1> */}
             <div className="panel mt-6">
-                <div className="flex md:items-center md:flex-row flex-col mb-5 gap-5">
+                <div className=" flex justify-between md:items-center md:flex-row flex-col mb-5 gap-5">
                   {show && ( <h5 className="font-semibold text-lg dark:text-white-light">{values && values.length} Records/s Found</h5>)}
-                    <div className="ltr:ml-auto rtl:mr-auto">
-                      {show && (  <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />)}
-                    </div>
+
+                  <div className='flex justify-end'>
+                    <button className='btn btn-primary me-2 btn-sm btn-dark'>Preview Selection</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-dark'>Select All</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-dark'>Clear Selection</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-dark'>Copy Details</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-success'>Approve Record</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-warning'>For Revision</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-secondary'>Print PIS</button>
+                    <NavLink to={'/PropertyForm'}><button className='btn btn-primary me-2 btn-sm btn-success'>Add</button></NavLink>
+                  
+                    <button className='btn btn-primary me-2 btn-sm btn-warning'>Edit</button>
+                    <button className='btn btn-primary me-2 btn-sm btn-danger'>Delete</button>
+
+                   </div>
+                  
                 </div>
+                
                 <div className="datatables">
                     <DataTable
                         highlightOnHover
