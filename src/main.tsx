@@ -11,7 +11,7 @@ import './tailwind.css';
 import './i18n';
 
 // Router
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider, BrowserRouter } from 'react-router-dom';
 import router from './router/index';
 
 // Redux
@@ -23,7 +23,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <Suspense>
             <Provider store={store}>
-                <RouterProvider router={router} />
+                {/* <BrowserRouter basename="/majesty-real-estate-ui">
+                    <RouterProvider router={router} />
+                </BrowserRouter> */}
+                    <RouterProvider router={router} />
             </Provider>
         </Suspense>
     </React.StrictMode>

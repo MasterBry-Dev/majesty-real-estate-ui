@@ -7,12 +7,12 @@ const Error404 = lazy(() => import('../pages/Error404'));
 const routes = [
     // dashboard
     {
-        path: '/',
+        path: '/majesty-real-estate-ui/',
         element: <PropertyInventory />,
         layout: 'default',
     },
     {
-        path: '/PropertyForm',
+        path: '/majesty-real-estate-ui/PropertyForm',
         element: <PropertyForm/>,
         layout: 'default'
     },

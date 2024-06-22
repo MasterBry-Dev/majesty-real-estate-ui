@@ -1,12 +1,15 @@
 {
     "name": "vristo-react-vite",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.1.0",
     "type": "module",
+    "homepage": "https://bryansurio1.github.io/majesty-real-estate-ui/",
     "scripts": {
         "start": "vite --open",
-        "build": "vite build",
-        "serve": "vite preview "
+        "build": "vite build --base=./",
+        "serve": "vite preview ",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
@@ -21,20 +24,20 @@
         "@types/node": "^16.11.64",
         "@types/react": "^18.0.21",
         "@types/react-dom": "^18.0.6",
+        "@types/react-text-mask": "^5.4.11",
         "mantine-datatable": "^1.7.17",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-popper": "^2.3.0",
+        "react-quill": "^2.0.0",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.4.2",
         "react-scripts": "5.0.1",
         "react-select": "^5.5.8",
         "react-text-mask": "^5.5.0",
-        "@types/react-text-mask": "^5.4.11",
         "typescript": "^4.8.4",
         "web-vitals": "^2.1.4",
-        "yup": "^0.32.11",
-        "react-quill": "^2.0.0"
+        "yup": "^0.32.11"
     },
     "devDependencies": {
         "@headlessui/react": "^1.7.3",
@@ -44,6 +47,7 @@
         "@types/react-dom": "^18.0.10",
         "@vitejs/plugin-react": "^3.1.0",
         "autoprefixer": "^10.4.17",
+        "gh-pages": "^6.1.1",
         "i18next": "^21.10.0",
         "i18next-browser-languagedetector": "^6.1.8",
         "i18next-http-backend": "^1.4.4",

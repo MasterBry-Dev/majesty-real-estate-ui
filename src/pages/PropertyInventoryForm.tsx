@@ -103,7 +103,10 @@ const PropertyInventoryForm: React.FC<PropertyInventoryFormProps> = ({}) => {
 
              <div className="flex justify-between m-5 mt-10 gap-2">
                 <div>
-                    <button className="btn btn-primary btn-warning">Back</button>
+                <NavLink to="/majesty-real-estate-ui/" className="group">
+                <button className="btn btn-primary btn-warning">Back</button> 
+                </NavLink>
+                   
                 </div>
 
                 <div className="flex gap-1">

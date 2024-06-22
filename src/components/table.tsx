@@ -80,7 +80,7 @@ const Table: React.FC<TableProps>  = ({fields, values, show}) => {
                     <button className='btn btn-primary me-2 btn-sm btn-success'>Approve Record</button>
                     <button className='btn btn-primary me-2 btn-sm btn-warning'>For Revision</button>
                     <button className='btn btn-primary me-2 btn-sm btn-secondary'>Print PIS</button>
-                    <NavLink to={'/PropertyForm'}><button className='btn btn-primary me-2 btn-sm btn-success'>Add</button></NavLink>
+                    <NavLink to={'/majesty-real-estate-ui/PropertyForm'}><button className='btn btn-primary me-2 btn-sm btn-success'>Add</button></NavLink>
                   
                     <button className='btn btn-primary me-2 btn-sm btn-warning'>Edit</button>
                     <button className='btn btn-primary me-2 btn-sm btn-danger'>Delete</button>
