@@ -134,7 +134,7 @@ const themeConfigSlice = createSlice({
         },
 
         setPageTitle(state, { payload }) {
-            document.title = `${payload} | MY HOME TOWN`;
+            document.title = `${payload} | MAJESTY REAL ESTATE`;
         },
     },
 });
