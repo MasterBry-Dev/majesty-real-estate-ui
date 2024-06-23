@@ -32,6 +32,8 @@ import IconMenuPages from '../Icon/Menu/IconMenuPages';
 import IconMenuAuthentication from '../Icon/Menu/IconMenuAuthentication';
 import IconMenuDocumentation from '../Icon/Menu/IconMenuDocumentation';
 import IconEdit from '../Icon/IconEdit';
+import IconUser from '../Icon/IconUser';
+import IconUsers from '../Icon/IconUsers';
 
 const Sidebar = () => {
     const [currentMenu, setCurrentMenu] = useState<string>('');
@@ -71,6 +73,9 @@ const Sidebar = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
+    const list_bg = 'dark:hover:bg-white hover:rounded-2xl hover:text-white hover:font-bold'
+
+
     return (
         <div className={semidark ? 'dark' : ''}>
         <nav
@@ -79,7 +84,8 @@ const Sidebar = () => {
             <div className="bg-white dark:bg-black h-full flex flex-col">
                 <div className="flex justify-between items-center px-4 py-3">
                     <NavLink to="/" className="main-logo flex items-center shrink-0">
-                        <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">{t('(Logo Here)')}</span>
+                        <IconUsers className='ms-3 w-fit'/>
+                        <span className="text-base ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light font-bold">{'Majesty Real Estate'}</span>
                     </NavLink>
     
                     <button
@@ -92,58 +98,51 @@ const Sidebar = () => {
                 </div>
                 <PerfectScrollbar className="flex-grow relative">
                     <ul className="relative font-semibold space-y-0.5 p-4 py-0">
-                        <h2 className="py-3 px-7 flex items-center justify-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
+                        <h2 className="py-3 px-7 flex items-center justify-center uppercase font-extrabold bg-slate-50 dark:bg-zinc-50 dark:bg-opacity-[0.08] -mx-4 mb-5 text-white-light">
                             <IconMinus className="w-4 h-5 flex-none hidden" />
-                            <span>{t('Administrator')}</span>
+                            <span className='dark:text-white-light'>{'Sections'}</span>
                         </h2>
     
                         <li className="nav-item">
                             <ul>
-                                <li className="nav-item">
-                                    <NavLink to="/" className="group">
-                                        <div className="flex items-center">
-                                            <IconEdit fill={true} className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Property Inventory')}</span>
+                                <li className={`nav-item ${list_bg}`}>
+                                    <NavLink to="/property-inventory" className="group">
+                                        <div className="flex items-center ">
+                                            <IconEdit fill={true} className="group-hover:!text-primary shrink-0 !text-white" />
+                                            <span className="ltr:pl-3 rtl:pr-3 text-white dark:text-[#506690] dark:group-hover:text-white-dark group-hover:text-white-light">{('Property Inventory')}</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className={`nav-item ${list_bg} `}>
                                     <NavLink to="/apps/mailbox" className="group">
-                                        <div className="flex items-center">
-                                            <IconMenuMailbox className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Property Matching')}</span>
+                                        <div className="flex items-center ">
+                                            <IconMenuMailbox className="group-hover:!text-primary shrink-0 !text-white" />
+                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Property Matching')}</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink to="/apps/todolist" className="group">
-                                        <div className="flex items-center">
-                                            <IconMenuTodo className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('todo_list')}</span>
-                                        </div>
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
+                              
+                                <li className={`nav-item ${list_bg}`}>
                                     <NavLink to="/apps/notes" className="group">
                                         <div className="flex items-center">
-                                            <IconMenuNotes className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Inquiry')}</span>
+                                            <IconMenuNotes className="group-hover:!text-primary  shrink-0 !text-white" />
+                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Inquiry')}</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className={`nav-item ${list_bg}`}>
                                     <NavLink to="/apps/scrumboard" className="group">
                                         <div className="flex items-center">
-                                            <IconMenuScrumboard className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Users')}</span>
+                                            <IconUser fill={true} className="group-hover:!text-primary  shrink-0 !text-white" />
+                                            <span className="ltr:pl-3 rtl:pr-3 text-black group-hover:text-white-light dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Users')}</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className={`nav-item ${list_bg}`}>
                                     <NavLink to="/apps/contacts" className="group">
                                         <div className="flex items-center">
-                                            <IconMenuContacts className="group-hover:!text-primary shrink-0" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Reports')}</span>
+                                            <IconMenuContacts className="group-hover:!text-primary  shrink-0 !text-white" />
+                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Reports')}</span>
                                         </div>
                                     </NavLink>
                                 </li>

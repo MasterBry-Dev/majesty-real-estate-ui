@@ -72,7 +72,7 @@ const Table: React.FC<TableProps>  = ({fields, values, show}) => {
                 <div className=" flex justify-between md:items-center md:flex-row flex-col mb-5 gap-5">
                   {show && ( <h5 className="font-semibold text-lg dark:text-white-light">{values && values.length} Records/s Found</h5>)}
 
-                  <div className='flex justify-end'>
+                  <div className='grid xl:flex xl:justify-end'>
                     <button className='btn btn-primary me-2 btn-sm btn-dark'>Preview Selection</button>
                     <button className='btn btn-primary me-2 btn-sm btn-dark'>Select All</button>
                     <button className='btn btn-primary me-2 btn-sm btn-dark'>Clear Selection</button>
@@ -80,8 +80,7 @@ const Table: React.FC<TableProps>  = ({fields, values, show}) => {
                     <button className='btn btn-primary me-2 btn-sm btn-success'>Approve Record</button>
                     <button className='btn btn-primary me-2 btn-sm btn-warning'>For Revision</button>
                     <button className='btn btn-primary me-2 btn-sm btn-secondary'>Print PIS</button>
-                    <NavLink to={'/PropertyForm'}><button className='btn btn-primary me-2 btn-sm btn-success'>Add</button></NavLink>
-                  
+                    <NavLink to={'/property-inventory/form'}><button className='btn btn-primary me-2 btn-sm btn-success'>Add</button></NavLink>
                     <button className='btn btn-primary me-2 btn-sm btn-warning'>Edit</button>
                     <button className='btn btn-primary me-2 btn-sm btn-danger'>Delete</button>
 

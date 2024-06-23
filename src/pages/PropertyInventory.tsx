@@ -114,6 +114,7 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
 
     return (
         <>
+        {/* breadcrumbs */}
         <div className="mb-5">
                 <ol className="flex text-gray-500 font-semibold dark:text-white-dark">
                     <li>
@@ -124,8 +125,11 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
                     </li>
                     
                  </ol>
-            </div>
+        </div>
+    
+        {/* main container */}
         <div>
+            {/*  */}
             <div className='grid xl:grid-cols-4 gap-3'>
                 <div className='col-span-1 panel'>
                     <h2 className='text-dark font-bold text-base mb-7'>Search</h2>
@@ -138,10 +142,8 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
                         )
                     })}
                     
-                  
-
                 </div>
-                <div className='col-span-3 panel'>
+                <div className='xl:col-span-3 col-span-1 panel'>
                     <Tab.Group>
                                 <Tab.List className=" mt-3 flex flex-wrap border-b border-white-light dark:border-[#191e3a]">
                                     <Tab as={Fragment}>
