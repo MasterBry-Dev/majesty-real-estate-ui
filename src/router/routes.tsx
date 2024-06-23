@@ -5,14 +5,14 @@ const PropertyForm = lazy(() => import('../pages/PropertyInventoryForm'));
 const Error404 = lazy(() => import('../pages/Error404'));
 
 const routes = [
-    // dashboard
+    // dashboardz
     {
-        path: '/',
+        path: '/property-inventory',
         element: <PropertyInventory />,
         layout: 'default',
     },
     {
-        path: '/PropertyForm',
+        path: '/property-inventory/form',
         element: <PropertyForm/>,
         layout: 'default'
     },
