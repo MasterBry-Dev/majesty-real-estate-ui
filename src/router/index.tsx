@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import BlankLayout from '../components/Layouts/BlankLayout';
 import DefaultLayout from '../components/Layouts/DefaultLayout';
 import { routes } from './routes';
+import { URLConfig } from '../config';
 
 const finalRoutes = routes.map((route) => {
     return {
@@ -10,6 +11,8 @@ const finalRoutes = routes.map((route) => {
     };
 });
 
-const router = createBrowserRouter(finalRoutes);
+const router = createBrowserRouter(finalRoutes, {
+        basename: URLConfig.baseURL
+});
 
 export default router;
