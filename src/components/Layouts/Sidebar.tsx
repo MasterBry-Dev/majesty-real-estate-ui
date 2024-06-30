@@ -35,6 +35,9 @@ import IconEdit from '../Icon/IconEdit';
 import IconUser from '../Icon/IconUser';
 import IconUsers from '../Icon/IconUsers';
 
+import { faBook, faCopy, faGear, faHouse, faNewspaper, faPenToSquare, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const Sidebar = () => {
     const [currentMenu, setCurrentMenu] = useState<string>('');
     const [errorSubMenu, setErrorSubMenu] = useState(false);
@@ -73,76 +76,78 @@ const Sidebar = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
-    const list_bg = 'dark:hover:bg-white hover:rounded-2xl hover:text-white hover:font-bold'
+    // const list_bg = 'dark:hover:bg-white hover:rounded-2xl hover:text-white hover:font-bold'
 
-
+    const [isActive, setIsActive] = useState(false);
     return (
         <div className={semidark ? 'dark' : ''}>
         <nav
             className={`sidebar fixed min-h-screen h-full top-0 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}
         >
-            <div className="bg-white dark:bg-black h-full flex flex-col">
-                <div className="flex justify-between items-center px-4 py-3">
-                    <NavLink to="/" className="main-logo flex items-center shrink-0">
-                        <IconUsers className='ms-3 w-fit'/>
-                        <span className="text-base ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light font-bold">{'Majesty Real Estate'}</span>
-                    </NavLink>
-    
-                    <button
-                        type="button"
-                        className="collapse-icon w-8 h-8 rounded-full flex items-center hover:bg-gray-500/10 dark:hover:bg-dark-light/10 dark:text-white-light transition duration-300 rtl:rotate-180"
-                        onClick={() => dispatch(toggleSidebar())}
-                    >
-                        <IconCaretsDown className="m-auto rotate-90" />
-                    </button>
+            <div className="bg-white dark:bg-[#050a30] h-full flex flex-col">
+                <div className="flex justify-center items-center m-2">
+                    <div className="ltr:ml-1.5 rtl:mr-1.5">
+                        <img src="../assets/images/gmec-icon.jpg" alt="" className='w-28' />
+                    </div> 
                 </div>
                 <PerfectScrollbar className="flex-grow relative">
                     <ul className="relative font-semibold space-y-0.5 p-4 py-0">
+                        
                         <h2 className="py-3 px-7 flex items-center justify-center uppercase font-extrabold bg-slate-50 dark:bg-zinc-50 dark:bg-opacity-[0.08] -mx-4 mb-5 text-white-light">
                             <IconMinus className="w-4 h-5 flex-none hidden" />
-                            <span className='dark:text-white-light'>{'Sections'}</span>
+                            <span className='dark:text-white-light text-xs'>Property Inventory System</span> 
+                            
                         </h2>
     
                         <li className="nav-item">
                             <ul>
-                                <li className={`nav-item ${list_bg}`}>
-                                    <NavLink to="/property-inventory" className="group">
+                                <li className={`nav-item`}>
+                                    <NavLink to="/property-inventory" className="group" >
                                         <div className="flex items-center ">
-                                            <IconEdit fill={true} className="group-hover:!text-primary shrink-0 !text-white" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-white dark:text-[#506690] dark:group-hover:text-white-dark group-hover:text-white-light">{('Property Inventory')}</span>
+                                         <FontAwesomeIcon icon={faPenToSquare } className="icon" />
+                                            <span className="icon-span">Property Inventory</span>
                                         </div>
                                     </NavLink>
+                                    
                                 </li>
-                                <li className={`nav-item ${list_bg} `}>
-                                    <NavLink to="/apps/mailbox" className="group">
+                                <li className={`nav-item`}>
+                                    <NavLink to="/property-matching" className="group">
                                         <div className="flex items-center ">
-                                            <IconMenuMailbox className="group-hover:!text-primary shrink-0 !text-white" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Property Matching')}</span>
+                                          <FontAwesomeIcon icon={faCopy} className='icon'/>
+                                            <span className="icon-span">Property Matching</span>
                                         </div>
                                     </NavLink>
                                 </li>
                               
-                                <li className={`nav-item ${list_bg}`}>
-                                    <NavLink to="/apps/notes" className="group">
+                                <li className={`nav-item `}>
+                                    <NavLink to="/" className="group">
                                         <div className="flex items-center">
-                                            <IconMenuNotes className="group-hover:!text-primary  shrink-0 !text-white" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Inquiry')}</span>
+                                            <FontAwesomeIcon icon={faBook} className='icon'/>
+                                            <span className="icon-span">Inquiry</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className={`nav-item ${list_bg}`}>
-                                    <NavLink to="/apps/scrumboard" className="group">
+                                <li className={`nav-item `}>
+                                    <NavLink to="/" className="group">
                                         <div className="flex items-center">
-                                            <IconUser fill={true} className="group-hover:!text-primary  shrink-0 !text-white" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black group-hover:text-white-light dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Users')}</span>
+                                            <FontAwesomeIcon icon={faUsers} className='icon'/>
+                                            <span className="icon-span">Users</span>
                                         </div>
                                     </NavLink>
                                 </li>
-                                <li className={`nav-item ${list_bg}`}>
-                                    <NavLink to="/apps/contacts" className="group">
+                                <li className={`nav-item `}>
+                                    <NavLink to="/" className="group">
                                         <div className="flex items-center">
-                                            <IconMenuContacts className="group-hover:!text-primary  shrink-0 !text-white" />
-                                            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] group-hover:text-base dark:group-hover:text-white-dark group-hover:text-white-light">{('Reports')}</span>
+                                        <FontAwesomeIcon icon={faNewspaper} className='icon'/>
+                                            <span className="icon-span">Reports</span>
+                                        </div>
+                                    </NavLink>
+                                </li>
+                                <li className={`nav-item `}>
+                                    <NavLink to="/" className="group">
+                                        <div className="flex items-center">
+                                        <FontAwesomeIcon icon={faGear} className='icon'/>
+                                            <span className="icon-span">Settings</span>
                                         </div>
                                     </NavLink>
                                 </li>

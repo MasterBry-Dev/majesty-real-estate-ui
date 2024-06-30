@@ -32,6 +32,8 @@ import IconMenuDatatables from '../Icon/Menu/IconMenuDatatables';
 import IconMenuForms from '../Icon/Menu/IconMenuForms';
 import IconMenuPages from '../Icon/Menu/IconMenuPages';
 import IconMenuMore from '../Icon/Menu/IconMenuMore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faLaptop, faMailBulk, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
     const location = useLocation();
@@ -137,67 +139,62 @@ const Header = () => {
     const [flag, setFlag] = useState(themeConfig.locale);
 
     const { t } = useTranslation();
-
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
     return (
         <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === 'horizontal' ? 'dark' : ''}`}>
             <div className="shadow-lg">
-                <div className="relative bg-white flex w-full items-center px-16 py-5 dark:bg-slate-900">
-                       
+                <div className="relative bg-[#050a30] flex w-full items-center ps-10 pe-14 py-5">
                     <div className="sm:flex-1 ltr:sm:ml-0 ltr:ml-auto sm:rtl:mr-0 rtl:mr-auto flex items-center space-x-1.5 lg:space-x-2 rtl:space-x-reverse dark:text-[#d0d2d6]">
-                        <div className="sm:ltr:mr-auto sm:rtl:ml-auto">
-                           <span className='text-slate-900 font-bold text-lg dark:text-dark'>MAJESTY REAL ESTATE</span>
-                           
-                        </div>
-                        <div>
-                            {themeConfig.theme === 'light' ? (
-                                <button
-                                    className={`${
-                                        themeConfig.theme === 'light' &&
-                                        'flex items-center p-2 rounded-full bg-slate-800/60 dark:bg-dark/90 hover:text-primary hover:bg-dark/20 dark:hover:bg-dark/60'
-                                    }`}
-                                    onClick={() => {
-                                        dispatch(toggleTheme('dark'));
-                                    }}
-                                >
-                                    <IconSun />
-                                </button>
-                            ) : (
-                                ''
-                            )}
-                            {themeConfig.theme === 'dark' && (
-                                <button
-                                    className={`${
-                                        themeConfig.theme === 'dark' &&
-                                        'flex items-center p-2 rounded-full bg-slate-800/60 dark:bg-dark/90 hover:text-primary hover:bg-dark/20 dark:hover:bg-dark/60'
-                                    }`}
-                                    onClick={() => {
-                                        dispatch(toggleTheme('system'));
-                                    }}
-                                >
-                                    <IconMoon />
-                                </button>
-                            )}
-                            {themeConfig.theme === 'system' && (
-                                <button
-                                    className={`${
-                                        themeConfig.theme === 'system' &&
-                                        'flex items-center p-2 rounded-full bg-slate-800/60 dark:bg-dark/90 hover:text-primary hover:bg-dark/20 dark:hover:bg-dark/60'
-                                    }`}
-                                    onClick={() => {
-                                        dispatch(toggleTheme('light'));
-                                    }}
-                                >
-                                    <IconLaptop />
-                                </button>
-                            )}
-                        </div>
+                        <div className=''>
+                                {themeConfig.theme === 'light' ? (
+                                    <button
+                                        className={`${
+                                            themeConfig.theme === 'light' &&
+                                            'flex justify-center p-2 rounded-full bg-[#ffc700] hover:bg-[#fafafa] w-9 h-9'
+                                        }`}
+                                        onClick={() => {
+                                            dispatch(toggleTheme('dark'));
+                                        }}
+                                    >
+                                    <FontAwesomeIcon icon={faSun} color='black' size='xl'/>
+                                    </button>
+                                ) : (
+                                    ''
+                                )}
+                                {themeConfig.theme === 'dark' && (
+                                    <button
+                                        className={`${
+                                            themeConfig.theme === 'dark' &&
+                                            'flex justify-center p-2 rounded-full bg-[#ffc700] hover:bg-[#fafafa] w-10 h-10'
+                                        }`}
+                                        onClick={() => {
+                                            dispatch(toggleTheme('system'));
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={faMoon} color='black' size='xl'/>
+                                    </button>
+                                )}
+                                {themeConfig.theme === 'system' && (
+                                    <button
+                                        className={`${
+                                            themeConfig.theme === 'system' &&
+                                            'flex justify-center p-2 rounded-full bg-[#ffc700] hover:bg-[#fafafa] w-10 h-10'
+                                        }`}
+                                        onClick={() => {
+                                            dispatch(toggleTheme('light'));
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={faLaptop} color='black' size='xl'/>
+                                    </button>
+                                )}
+                         </div>
                        
                         <div className="dropdown shrink-0">
                             <Dropdown
                                 offset={[0, 8]}
                                 placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
-                                btnClassName="block p-2 rounded-full bg-slate-800/60 dark:bg-dark/90 hover:text-primary hover:bg-dark/20 dark:hover:bg-dark/60"
-                                button={<IconMailDot />}
+                                btnClassName="block p-2 rounded-full bg-[#ffc700] hover:bg-[#fafafa] w-9 h-9 flex justify-center"
+                                button={ <FontAwesomeIcon icon={faMailBulk} color='black' size='xl'/>}
                             >
                                 <ul className="!py-0 text-dark dark:text-white-dark w-[300px] sm:w-[375px] text-xs">
                                     <li className="mb-5" onClick={(e) => e.stopPropagation()}>
@@ -259,10 +256,10 @@ const Header = () => {
                             <Dropdown
                                 offset={[0, 8]}
                                 placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
-                                btnClassName="relative block p-2 rounded-full bg-slate-800/60 dark:bg-dark/90 hover:text-primary hover:bg-dark/20 dark:hover:bg-dark/60"
+                                btnClassName="block p-2 rounded-full bg-[#ffc700] hover:bg-[#fafafa] w-9 h-9 flex justify-center"
                                 button={
                                     <span>
-                                        <IconBellBing />
+                                        <FontAwesomeIcon icon={faBell} color='black' size='lg'/>
                                         <span className="flex absolute w-3 h-3 ltr:right-0 rtl:left-0 top-0">
                                             <span className="animate-ping absolute ltr:-left-[3px] rtl:-right-[3px] -top-[3px] inline-flex h-full w-full rounded-full bg-success/50 opacity-75"></span>
                                             <span className="relative inline-flex rounded-full w-[6px] h-[6px] bg-success"></span>
@@ -330,10 +327,16 @@ const Header = () => {
                             </Dropdown>
                         </div>
                         <div>
-                            <h1 className='text-slate-900 font-bold text-xs dark:text-dark'>
+                            <span className='text-[#fafafa] font-bold text-base mx-3'>{new Date().toLocaleDateString('en-US', options)}</span>
+                        </div>
+                     
+        
+                    </div>
+                    <div>
+                            <h1 className='text-[#fafafa] font-bold text-xs mx-3'>
                                 ADMINISTRATOR
                             </h1>
-                        </div>
+                    </div>
                         <div className="dropdown shrink-0 flex">
                             <Dropdown
                                 offset={[0, 8]}
@@ -341,37 +344,26 @@ const Header = () => {
                                 btnClassName="relative group block"
                                 button={<img className="w-9 h-9 rounded-full object-cover saturate-50 group-hover:saturate-100" src="/assets/images/user-profile.jpeg" alt="userProfile" />}
                             >
-                                <ul className="text-dark dark:text-white-dark !py-0 w-[230px] font-semibold dark:text-white">
+                                <ul className="text-dark dark:text-white-dark !py-0 w-[300px] font-semibold dark:text-white">
                                     <li>
                                         <div className="flex items-center px-4 py-4">
                                             <img className="rounded-md w-10 h-10 object-cover" src="/assets/images/user-profile.jpeg" alt="userProfile" />
                                             <div className="ltr:pl-4 rtl:pr-4 truncate">
                                                 <h4 className="text-base">
-                                                    John Doe
-                                                    <span className="text-xs bg-success-light rounded text-success px-1 ltr:ml-2 rtl:ml-2">Pro</span>
+                                                    Administrator
                                                 </h4>
-                                                <button type="button" className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white">
-                                                    johndoe@gmail.com
-                                                </button>
+                                                
+                                                <span className='text-black/60 text-xs'>
+                                                    IT Head/Database Custodian
+                                                </span>
+                                                
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <Link to="/users/profile" className="dark:hover:text-white">
                                             <IconUser className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
-                                            Profile
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/apps/mailbox" className="dark:hover:text-white">
-                                            <IconMail className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
-                                            Inbox
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/auth/boxed-lockscreen" className="dark:hover:text-white">
-                                            <IconLockDots className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
-                                            Lock Screen
+                                            Edit user details
                                         </Link>
                                     </li>
                                     <li className="border-t border-white-light dark:border-white-light/10">
@@ -383,7 +375,6 @@ const Header = () => {
                                 </ul>
                             </Dropdown>
                         </div>
-                    </div>
                 </div>
             </div>
         </header>
