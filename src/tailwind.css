@@ -53,7 +53,7 @@
     }
 
     body {
-        @apply bg-[#F9F9F9] font-nunito;
+        @apply bg-[#F9F9F9] font-poppins;
     }
 
     body.dark {
@@ -84,25 +84,34 @@
         @apply rounded-b-md;
     }
 
-    /* Sidebar */
+    /* Sidebar  nav-item*/
     .sidebar:hover .nav-item > a {
-        @apply w-auto;
+        @apply w-auto ;
     }
 
     .sidebar .nav-item > button,
     .sidebar .nav-item > a {
-        @apply mb-1 flex w-full items-center justify-between overflow-hidden whitespace-nowrap rounded-md p-2.5 text-[#506690] hover:bg-[#000]/[0.08] hover:text-black dark:hover:bg-[#181f32] dark:hover:text-white-dark;
+        @apply mb-1 flex w-full items-center justify-between overflow-hidden whitespace-nowrap rounded-md p-2.5 text-[#fafafa] hover:bg-[#000]/[0.08] hover:text-black dark:hover:bg-[#5b5b5b] dark:hover:text-white-dark;
     }
     .sidebar .nav-item > button.active,
     .sidebar .nav-item > a.active {
-        @apply bg-[#000]/[0.08] text-white dark:bg-slate-700 dark:text-white-dark;
+        @apply bg-[#000]/[0.08] text-dark dark:bg-[#ffc700] dark:text-white-dark;
     }
     
+     .faPenToSquare{
+        @apply text-[#fafafa];
+    }
 
     .sidebar .nav-item > button.active > div > span,
     .sidebar .nav-item > a.active > div > span {
-        @apply dark:!text-white;
+        @apply dark:!text-[#000000] dark:font-bold
     }
+
+   
+    .sidebar .nav-item > a.active > div > .icon {
+            @apply dark:!text-[#000000];
+        }
+    
 
     .sidebar ul.sub-menu li button,
     .sidebar ul.sub-menu li a {
@@ -709,4 +718,17 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
 /* Hightlight JS */
 pre.hljs {
     @apply p-6 rounded-md overflow-x-auto !bg-[#191e3a];
+}
+
+/* sidebar icon */
+.sidebar-icon {
+    @apply shrink-0 !text-[#5b5b5b] group-hover:!text-[#ffffff]
+
+}
+/* sidebar icon span */
+.icon-span{
+    @apply ltr:pl-3 rtl:pr-3 text-black dark:text-[#ffffff] group-hover:text-base dark:group-hover:text-[#ffffff] group-hover:text-white-light
+}
+.icon{
+    @apply dark:!text-[#fafafa];
 }

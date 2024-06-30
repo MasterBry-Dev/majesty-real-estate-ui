@@ -55,7 +55,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-                nunito: ['Nunito', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
             },
             spacing: {
                 4.5: '18px',
