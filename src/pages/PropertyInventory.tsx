@@ -11,12 +11,14 @@ import { useDispatch } from "react-redux";
 import MyTable from "./Mytable";
 import { PropertyInventoryModel } from "../models/PropertyInventoryModel";
 import { columns, rowData } from "../mockData/PropertyInventoryData";
+import { useNavigate } from "react-router-dom";
+
 interface PropertyInventoryProps {
 
 }
 
 const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
-
+    const navigate = useNavigate();
     const [displayData, setDisplayData] = useState<string>('');
     const onDisplay = (row: any) => {
         setDisplayData(row)
@@ -42,6 +44,53 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
         'Floor Area',
         'Price',
         'All Fields',
+    ]
+
+    const test = (row: any) => {
+        navigate(`/property-inventory/form`)
+    };
+    const buttons = [
+        {
+            button: 'Preview Selection',
+            btn_color: 'btn-outline-dark'
+        },
+        {
+            button: 'Select All',
+            btn_color: 'btn-outline-dark'
+        },
+        {
+            button: 'Clear Selection',
+            btn_color: 'btn-outline-dark'
+        },
+        {
+            button: 'Copy Details',
+            btn_color: 'btn-outline-dark'
+        },
+        {
+            button: 'Approve Record',
+            btn_color: 'btn-outline-success'
+        },
+        {
+            button: 'For Revision',
+            btn_color: 'btn-outline-warning'
+        },
+        {
+            button: 'Print-PIS',
+            btn_color: 'btn-outline-dark'
+        },
+        {
+            button: 'Add',
+            btn_color: 'btn-outline-success',
+            click: test
+        },
+        {
+            button: 'Edit',
+            btn_color: 'btn-outline-warning'
+        },
+        {
+            button: 'Delete',
+            btn_color: 'btn-outline-danger'
+        }
     ]
 
     return (
@@ -127,7 +176,7 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
             </div>
 
           <div className="mt-3">
-          <MyTable data={rowData} columns={columns} display={onDisplay}/>
+          <MyTable data={rowData} columns={columns} display={onDisplay} buttons={buttons} test={test}/>
           </div>
         </div>
         </>    
