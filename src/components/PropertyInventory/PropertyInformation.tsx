@@ -1,92 +1,96 @@
 import { title } from "process"
 
 interface PropertyInformationProps {
-
+    data?: any
+    columns?: any
 }
 
-const PropertyInformation: React.FC<PropertyInformationProps> = ({}) => {
+const PropertyInformation: React.FC<PropertyInformationProps> = ({ data, columns }) => {
     const fields = [
        { 
-        title: 'Property Code : ',
-        value:'D-CAL1189'
+        title: 'Property Code',
+        accessor: 'propertyCode'
        },
        {
-        title: 'Lot Area (Sqm) : ',
-        value:  '930'
+        title: 'Lot Area (Sqm)',
+        accessor: 'lotArea'
        },
        {
-        title: 'Structure Age : ',
-        value: ''
+        title: 'Structure Age',
+        accessor: 'structureAge'
        },
        {
-        title: 'Trans. Type : ',
-        value: 'Sale'
+        title: 'Trans. Type',
+        accessor: 'transactionType'
        },
        {
-        title:'Floor Area (Sqm) : ',
-        value: ''
+        title:'Floor Area (Sqm)',
+         accessor: 'floorArea'
        },
        {    
-        title: 'Status : ',
-        value: 'Available'
+        title: 'Status',
+         accessor: 'status'
        },
        {
-        title: 'Clasification : ',
-        value: 'Residential'
+        title: 'Clasification',
+         accessor: 'classification'
        },
        {
-        title: 'Price : ',
-        value:   '27,900,000.00'
+        title: 'Price',
+         accessor: 'price'
        },
        {
-        title: 'Frontage : ',
-        value: ''
+        title: 'Frontage',
+         accessor: 'frontage'
        },
        {
-        title: 'Property Type : ',
-        value: 'Vacant Lot'
+        title: 'Property Type',
+         accessor: 'propertyType'
        },
        {
-        title: 'Price per sqm : ',
-        value: '30,000.00'
+        title: 'Price per sqm',
+         accessor: ''
        },
        {
-        title: 'Ideal for : ',
-        value: ''
+        title: 'Ideal for',
+         accessor: 'idealFor'
        },
        {
-        title: 'Landmarks : ',
-        value: ''
+        title: 'Landmarks',
+         accessor: 'landmarks'
        },
        {
-        title: '    ',
-        value: ''
+        title: '',
+         accessor: ''
        },
        {
-        title: 'Orientation : ',
-        value: ''
+        title: 'Orientation',
+         accessor: 'orientation'
        },
        {
-        title: '    ',
-        value: ''
+        title: '',
+         accessor: ''
        },
        {
-        title: '    ',
-        value: ''
+        title: '',
+         accessor: ''
        },
        {
-        title: 'Flooding : ',
-        value: ''
+        title: 'Flooding',
+         accessor: 'flooding'
        },
     ]
 
+    const address = data.HouseOrLotNumber+' '+data.street+' '+data.village_subdivision+' '+data.city
     return (
        <div className="pt-5">
-        <div className=" grid xl:grid-cols-3">
-            {fields.map((fields)=>{
+        {data ? (
+            <div>
+                <div className=" grid xl:grid-cols-3">
+            {fields.map((fields: { title: any; accessor: string | number })=>{
                 return (
                     <div className="col-span-1 m-1">
-                        <span className="dark-text">{`${fields.title}`} <b>{fields.value}</b></span>
+                        <span className="dark-text">{`${fields.title !== '' ? fields.title+' : ' : ''} `} <b>{data[fields.accessor]}</b></span>
                     </div>
                 )
             })}
@@ -94,17 +98,23 @@ const PropertyInformation: React.FC<PropertyInformationProps> = ({}) => {
         </div>
         <div className="flex justify-between pt-5 pe-10">
             <div className="grid px-5">
-                <span>Address : <b>Salmon samara street corner sinilayasi, dagat dagatan, caloocan city </b></span>
-                <span>Description : <b>Vacant slot with squaters (58 families), behind main road c4</b> </span>
-                <span>Remarks : </span>
+                <span>Address : <b>{address}</b></span>
+                <span>Description : <b>{data.description}</b> </span>
+                <span>Remarks : <b>{data.remarks}</b></span>
             </div>
                 <div className="pe-14 ">
                     <span className="text-xs">Property Image</span>
                     <div className="flex items-center">
-                    <img src='../dist/assets/images/myhometown.png' alt="img" className="w-60 h-40" />
+                    <img src='/assets/images/gmec-icon.jpg' alt="img" className="w-60 h-40" />
                     </div>
                 </div>
         </div>
+            </div>
+        ): (
+            <div className="flex justify-center py-28">
+                <span className="text-dark text-lg">Select Data below to display here</span>
+            </div>
+        )}
        </div>
     )
 }

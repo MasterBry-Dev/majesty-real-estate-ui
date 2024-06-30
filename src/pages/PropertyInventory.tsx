@@ -1,100 +1,32 @@
 import Table from "../components/table"
 import Select from 'react-select';
 import { Tab } from '@headlessui/react';
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { setPageTitle } from "../store/themeConfigSlice";
 
 import PropertyInformation from "../components/PropertyInventory/PropertyInformation";
 import OtherInformation from "../components/PropertyInventory/OtherInformation";
 import MarketingInformation from "../components/PropertyInventory/MarketingInformation";
 import { useDispatch } from "react-redux";
-
+import MyTable from "./Mytable";
+import { PropertyInventoryModel } from "../models/PropertyInventoryModel";
+import { columns, rowData } from "../mockData/PropertyInventoryData";
 interface PropertyInventoryProps {
 
 }
 
 const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
 
+    const [displayData, setDisplayData] = useState<string>('');
+    const onDisplay = (row: any) => {
+        setDisplayData(row)
+    };
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setPageTitle('Property Inventory'));
     });
-    const columns = [
-        { 
-            accessor: 'code', 
-            title: 'Property Code', 
-            sortable: true 
-        },
-        {
-            accessor: 'transType',
-            title: 'Trans Type', 
-            sortable: true 
-        },
-        { 
-            accessor: 'propertyType', 
-            title: 'Property Type', 
-            sortable: true 
-        },
-        { 
-            accessor: 'houseLotNumber', 
-            title: 'House/Lot#',
-            sortable: true 
-        },
-        { 
-            accessor: 'street', 
-            title: 'Street',
-            sortable: true 
-        },
-        { 
-            accessor: 'location', 
-            title: 'Brgy/Dist/Municipality',
-            sortable: true 
-        },
-        { 
-            accessor: 'village', 
-            title: 'Village/Subd.',
-            sortable: true 
-        },
-        { 
-            accessor: 'city', 
-            title: 'City',
-            sortable: true 
-        },
-        { 
-            accessor: 'lotArea', 
-            title: 'Lot Area',
-            sortable: true 
-        }
-        
-        ]
 
-
-        const rowData = [
-            {
-                code: 'D-CAL1189',
-                transType: 'Sale',
-                propertyType: 'Vacant lot',
-                houseLotNumber: 'Lot 31 & Lot 34',
-                street: 'Salmon samara street',
-                location: 'Camarin',
-                village: 'Dagat dagatan',
-                city: 'caloocan city',
-                lotArea: ''
-        
-            },
-            {
-                code: 'D-CAL1190',
-                transType: 'Sale',
-                propertyType: 'Vacant lot',
-                houseLotNumber: 'Lot 65',
-                street: 'Gumamela street',
-                location: 'Tala',
-                village: 'umbong',
-                city: 'caloocan city',
-                lotArea: ''
-        
-            }
-        ]
     const options = [
         { value: 'any', label: 'Any' },
         { value: 'approved', label: 'Approved' },
@@ -179,13 +111,13 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
                                 </Tab.List>
                                 <Tab.Panels>
                                         <Tab.Panel>
-                                                <PropertyInformation/>
+                                                <PropertyInformation data={displayData} columns={columns} />
                                         </Tab.Panel>
                                         <Tab.Panel>
-                                                <OtherInformation/>
+                                                <OtherInformation data={displayData} columns={columns}/>
                                         </Tab.Panel>
                                         <Tab.Panel>
-                                                <MarketingInformation/>
+                                                <MarketingInformation data={displayData} columns={columns}/>
                                         </Tab.Panel>
                                 </Tab.Panels>
                             </Tab.Group>
@@ -194,7 +126,9 @@ const PropertyInventory: React.FC<PropertyInventoryProps> = ({}) =>{
 
             </div>
 
-            <Table fields={columns} values={rowData} show={true}/>
+          <div className="mt-3">
+          <MyTable data={rowData} columns={columns} display={onDisplay}/>
+          </div>
         </div>
         </>    
     )
